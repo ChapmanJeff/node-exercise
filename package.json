@@ -1,0 +1,19 @@
+{
+  "name": "node-exercise",
+  "version": "1.0.0",
+  "description": "A little exercise using a Star Wars API [https://swapi.co/](https://swapi.co/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChapmanJeff/node-exercise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChapmanJeff/node-exercise/issues"
+  },
+  "homepage": "https://github.com/ChapmanJeff/node-exercise#readme"
+}
