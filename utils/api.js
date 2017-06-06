@@ -10,6 +10,7 @@ const axios = require('axios');
      .then(characterInfo => {
 
        let character = characterInfo.data.results[0];
+       //render ejs
        res.render('character',{
          character: character
        })
@@ -40,12 +41,14 @@ const axios = require('axios');
        if (!sortBy) {
          res.status(200).send(result[0])
        }
+       //sort alphabetically
        if (sortBy.toLowerCase() === 'name') {
           res.status(200).send(result[0].sort((personA, personB)=>{
             if (personA[sortBy] < personB[sortBy]) return -1;
             if (personA[sortBy] > personB[sortBy]) return 1;
             return 0;
           }))
+          //sort by number
         } else {
           res.status(200).send(result[0].sort((a,b)=> a[sortBy] - b[sortBy]))
         }
@@ -53,6 +56,7 @@ const axios = require('axios');
      .catch((err)=> console.log(err))
    },
 
+// Map through planets and map through residents to get final answer
    planetResidents (req, res) {
      let results = {};
      return axios.get(`http://swapi.co/api/planets`)
