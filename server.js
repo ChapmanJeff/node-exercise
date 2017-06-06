@@ -15,8 +15,8 @@ app.get('/character/:name', api.getCharacter)
 
 app.get('/characters', api.get50Characters)
 
-'/characters'
-'/planetresidents'
+app.get('/planetresidents', api.planetResidents)
+
 
 //Port
 app.listen(port, () =>
