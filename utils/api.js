@@ -7,7 +7,13 @@ const axios = require('axios');
      const name = req.params.name;
      console.log(name);
      return axios.get(`http://swapi.co/api/people/?search=${name}`)
-     .then(characterInfo => res.status(200).send(characterInfo.data.results))
+     .then(characterInfo => {
+
+       let character = characterInfo.data.results[0];
+       res.render('character',{
+         character: character
+       })
+     })
      .catch((err)=> console.log(err))
    },
 
@@ -51,11 +57,10 @@ const axios = require('axios');
      let results = {};
      return axios.get(`http://swapi.co/api/planets`)
      .then((planets)=> {
-      //  console.log(planets)
        let thePlanets = planets.data.results;
-      //  console.log(thePlanets)
 
-       let a = thePlanets.map((planet)=>{
+       let mapPlanets = thePlanets.map((planet)=>{
+         results[planet.name] = [];
          let residents = planet.residents.map((resident)=>{
             return axios.get(resident)
             .then((residentInfo)=> {
@@ -65,17 +70,16 @@ const axios = require('axios');
           })
           return axios.all(residents).then((residentsRes)=>{
             console.log(3,residentsRes)
-            results[planet.name] = residentsRes
+            results[planet.name] = results[planet.name].concat(residentsRes)
             return 'added'
           })
-          .catch((err)=> console.log(err))
        })
-       
-       return axios.all(a).then(()=>{
+
+       return axios.all(mapPlanets).then(()=>{
          res.status(200).send(results)
        })
-       .catch((err)=> console.log(err))
      })
+     .catch((err)=> console.log(err))
    }
 
  }

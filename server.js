@@ -1,10 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const port = process.env.port || 8080;
-const axios = require('axios');
+// const axios = require('axios');
 const api = require('./utils/api')
 
 const app = express();
+
+app.set('view engine', 'ejs');
+
 
 //Express Middleware
 app.use(bodyParser.json());
