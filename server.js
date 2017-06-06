@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 
 //Endpoints
+app.get('/', (req,res)=>{res.render('index')})
+
 app.get('/character/:name', api.getCharacter)
 
 app.get('/characters', api.get50Characters)
