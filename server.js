@@ -1,15 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const port = process.env.port || 8080;
+const axios = require('axios');
+const api = require('./utils/api')
 
-cons app = express();
+const app = express();
 
 //Express Middleware
 app.use(bodyParser.json());
 
 
 //Endpoints
-'/character/:name'
+app.get('/character/:name', api.getCharacter)
+
+app.get('/characters', api.get50Characters)
+
 '/characters'
 '/planetresidents'
 

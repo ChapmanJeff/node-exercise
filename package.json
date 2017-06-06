@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ChapmanJeff/node-exercise/issues"
   },
-  "homepage": "https://github.com/ChapmanJeff/node-exercise#readme"
+  "homepage": "https://github.com/ChapmanJeff/node-exercise#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
 }
